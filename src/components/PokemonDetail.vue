@@ -78,9 +78,9 @@ const favoritesHandler = () => {
 
 const copyToClipboard = async () => {
   const pokemonAtributes = `
-      Name: ${props.pokemonAttributes.name}
-      Weight: ${props.pokemonAttributes.weight}
-      Height: ${props.pokemonAttributes.height}
+      Name: ${props.pokemonAttributes.name},
+      Weight: ${props.pokemonAttributes.weight},
+      Height: ${props.pokemonAttributes.height},
       Types: ${props.pokemonAttributes.types
         .map((el) => el.type.name)
         .join(", ")}

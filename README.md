@@ -1,6 +1,6 @@
 # Pokédex App
 
-Una pequeña App construida con **Vue 3**, **Vite** y **Element Plus**, que permite buscar, visualizar y filtrar una lista de Pokémons. Al seleccionar un pokémon de la lista, se despliega un modal con información detallada del mismo y donde se puede seleccionar si es uno de mis pokémones favoritos o no.
+Una pequeña App construida con **Vue 3**, **Vite** y **Element Plus**, que permite buscar, visualizar y filtrar una lista de Pokémons. Al seleccionar un pokémon de la lista, se despliega un modal con información detallada del mismo y donde se puede seleccionar si es uno de mis Pokémons favoritos o no.
 
 ## 🚀 Tecnologías Utilizadas
 
@@ -32,7 +32,7 @@ El proyecto está dividido en **componentes reutilizables** y una lógica clara 
 - `Search.vue`: Barra de búsqueda para filtrar Pokémon por nombre.
 - `PokemonsList.vue`: Lista de Pokémon renderizada dinámicamente.
 - `PokemonDetail.vue`: Modal con el detalle completo de cada Pokémon.
-- `ButtonsFilter.vue`: Botones para alternar entre todos los pokemons y  pokemones favoritos.
+- `ButtonsFilter.vue`: Botones para alternar entre todos los pokémons y  pokémons favoritos.
 - `RedirectButton.vue`: Componente reutilizable para redireccionar rutas.
 
 ---
