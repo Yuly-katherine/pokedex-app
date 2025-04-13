@@ -1,6 +1,6 @@
 # Pokédex Vue 3 App
 
-Una pequeña Pokédex construida con **Vue 3**, **Vite** y **Element Plus**, que permite buscar, visualizar y filtrar una lista de Pokémons. Al seleccionar un pokemon de la lista, se despliega un modal con información detallada del mismo y donde se puede seleccionar si es uno de mis pokemones favoritos o no.
+Una pequeña App construida con **Vue 3**, **Vite** y **Element Plus**, que permite buscar, visualizar y filtrar una lista de Pokémons. Al seleccionar un pokémon de la lista, se despliega un modal con información detallada del mismo y donde se puede seleccionar si es uno de mis pokémones favoritos o no.
 
 ## 🚀 Tecnologías Utilizadas
 
@@ -39,7 +39,7 @@ El proyecto está dividido en **componentes reutilizables** y una lógica clara 
 
 ## 💡 Decisiones de Diseño
 
-- Toda la lógica de búsqueda, filtrado y manejo del modal está centralizada en el componente padre **PokemonsList**. Esto permite tener un **flujo de datos más claro y fácil de mantener**.
+- Toda la lógica de búsqueda, filtrado y manejo del modal está centralizada en el componente padre **PokemonsView**. Esto permite tener un **flujo de datos más claro y fácil de mantener**.
 - Los componentes fueron creados de forma modular para **reutilizar funcionalidades** y evitar duplicación de código.
 - Se priorizó una **estructura limpia, simple y escalable**, evitando lógica redundante o innecesaria.
 - Para mostrar el **loading** de forma más visual, utilicé un **setTimeout** artificial. **No es una buena práctica para producción**, pero lo hice intencionalmente para simular una carga más lenta y así visualizar mejor el componente de carga.
@@ -67,8 +67,7 @@ npm run dev
 
 ## 💥 ¡¡A probar!!
 
----
 
 ## ✨ Autor
 
-- Desarrollado con 💛 por Yuly Katherine Gómez
+Desarrollado con 💛 por Yuly Katherine Gómez
