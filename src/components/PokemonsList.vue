@@ -1,29 +1,33 @@
 <template>
-  <div class="pokemons-list">
-    <section class="container-list" v-if="props.pokemonsFiltered.length">
+  <main class="container">
+    <section class="container-list" v-if="hasResults">
       <ul class="container-list__main">
         <li
           class="container-list__main-item"
-          @click="emit('openModal', pokemon.name)"
+          @click="emit('openModal', pokemon)"
           v-for="pokemon in props.pokemonsFiltered"
           :key="pokemon.name"
         >
-          <div class="item">{{ pokemon.name }}</div>
-          <img class="item" :src="pokemon.favorite ? favorite : notFavorite" />
+          <div class="item-name">{{ pokemon.name }}</div>
+          <img
+            class="item-favorite"
+            :src="pokemon.favorite ? favorite : notFavorite"
+          />
         </li>
       </ul>
     </section>
-    <section class="container-list" v-else>
-      <span class="container-list__title">Uh-oh!</span>
-      <p class="container-list__text">You look lost on your journey!</p>
+    <section class="empty-list" v-else>
+      <span class="empty-list__title">Uh-oh!</span>
+      <p class="empty-list__text">You look lost on your journey!</p>
     </section>
-  </div>
+  </main>
 </template>
   
   <script setup>
 // ----------- IMPORTS-----------
-import favorite from "@/assets/scss/icons/favorite.svg";
-import notFavorite from "@/assets/scss/icons/notFavorite.svg";
+import favorite from "@/assets/scss/icons/favorite.svg?row";
+import notFavorite from "@/assets/scss/icons/notFavorite.svg?row";
+import { computed } from 'vue'
 
 // ----------- DEFINE PROPS -----------
 const props = defineProps({
@@ -34,20 +38,19 @@ const props = defineProps({
 
 // ----------- DEFINE EMITS -----------
 const emit = defineEmits(["openModal"]);
+
+
+// ----------- COMPUTED -----------
+const hasResults = computed(() => props.pokemonsFiltered.length > 0)
+
 </script>
   
   <style  lang="scss" scoped>
+  .container{
+    @include list-elements();
+  }
 .container-list {
-  margin: 50px 0;
-  &__title {
-    color: $color-tittle;
-    font-weight: 700;
-    font-size: 26px;
-  }
-  &__main-text {
-    margin: 20px;
-    line-height: 1.6;
-  }
+  padding-bottom: 100px;
   &__main {
     padding: 0;
     margin: 0;
@@ -68,9 +71,27 @@ const emit = defineEmits(["openModal"]);
     }
   }
 }
+.empty-list{
+  &__title {
+    color: $color-title;
+    font-weight: 700;
+    font-size: 26px;
+  }
+  &__main-text {
+    margin: 20px;
+    line-height: 1.6;
+    font-size: $font-general;
+  }
 
-.item {
-  padding: 30px;
-  font-weight: 600;
+}
+.item-name {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: $font-general;
+  margin-left: 20px;
+}
+
+.item-favorite {
+  margin-right: 20px;
 }
 </style>

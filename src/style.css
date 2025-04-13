@@ -1,18 +1,24 @@
-
-:root {
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Lato", sans-serif;
   line-height: 1.5;
   font-weight: 400;
   background-color: #F5F5F5;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 #app {
-  max-width: 1280px; 
+  max-width: 1280px;
   margin: 0 auto;
   text-align: center;
 }

@@ -1,12 +1,12 @@
 <template>
-  <header>
+  <header class="header-search">
     <el-input
-      v-model="pokemonName"
+      v-model="name"
       size="large"
       placeholder="Search"
       :prefix-icon="Search"
-      class="search"
-      @input="searchPokemon"
+      class="header-search__input"
+      @input="searchByName"
     />
   </header>
 </template>
@@ -20,20 +20,25 @@ import { Search } from "@element-plus/icons-vue";
 const emit = defineEmits(["filterOptions"]);
 
 // ----------- VARIABLE -----------
-const pokemonName = ref("");
+const name = ref("");
 
 // ----------- METHODS -----------
-const searchPokemon = () => {
-  emit("filterOptions", pokemonName.value);
+const searchByName = () => {
+  emit("filterOptions", name.value);
 };
 </script>
   
-  <style  lang="scss" scoped>
-.search {
-  height: 50px;
-  border-radius: 10px;
+<style  lang="scss" scoped>
+.header-search {
+  padding-top: 30px;
+  @include list-elements();
+  &__input {
+    height: 50px;
+    border-radius: 10px;
+  }
 }
-::v-deep .el-input__wrapper {
+
+:deep .el-input__wrapper {
   border-radius: 10px;
   background-color: $color-white;
   box-shadow: $box-shadow-input;

@@ -1,98 +1,53 @@
 <template>
-  <div class="home">
-    <Search @filterOptions = "filterOptions" 
+  <div class="container">
+    <img
+      class="container__img"
+      src="../assets/scss/icons/pikachu.svg"
+      alt="pikachú"
     />
-    <PokemonsList
-    :pokemonsFiltered = "pokemonsFiltered" 
-    @openModal = "openModal"
-    />
-    <RedirectButton 
-    v-if= "showRedirect"
-    />
-    <ButtonsFilter
-    @showAll = "filterOptions"
-    @showFavorites = "showFavorites"
-    />
-
-    <!-- ----------- MODAL ----------- -->
-    <PokemonDetail
-    :pokemonData="pokemonData"
-    :modalVisible = modalVisible
-    @closeModal = "closeModal"
-    />
+    <section class="container__main">
+      <span class="container__main-title">Welcome to Pokédex</span>
+      <p class="container__main-text">
+        The digital encyclopedia created by Professor Oak is an invaluable tool
+        <br />
+        to Trainers in the Pokémon world.
+      </p>
+    </section>
+    <RedirectButton />
   </div>
 </template>
-
-<script setup>
-//----------- IMPORTS -----------
-import Search from "../components/Search.vue";
-import PokemonsList from "../components/PokemonsList.vue";
-import ButtonsFilter from "../components/ButtonsFilter.vue";
+  
+  <script setup>
+// ----------- IMPORT -----------
 import RedirectButton from "../components/RedirectButton.vue";
-import pokebola from "../assets/scss/icons/pokeBola.svg?raw";
-import PokemonDetail from "../components/PokemonDetail.vue"
-import { ElLoading } from "element-plus";
-import { ref } from "vue";
-import { onBeforeMount } from 'vue'
-import { usePokemonStore } from '../store/modules/pokemons'
-import { storeToRefs } from 'pinia'
 
-// ----------- STORE SETUP -----------
-const store = usePokemonStore()
-const { pokemonList } = storeToRefs(store)
-const pokemonsFiltered = ref([...pokemonList.value]);
-const showRedirect = ref(false)
-const modalVisible = ref(false)
-const pokemonData = ref({})
-
-
-// ----------- METHODS -----------
-const openModal= async (name) => {
-  pokemonData.value = await store.getPokemonByName(name)
-  modalVisible.value = true
-}
-
-const closeModal= async () => {
-  modalVisible.value = false
-}
-
-const showFavorites = () => {
-  pokemonsFiltered.value = pokemonList.value.filter(pokemon =>
-  pokemon.favorite === true)
-}
-
-const filterOptions = (name) => {
-  if(name) {
-    const normalized = name.toLowerCase()
-    pokemonsFiltered.value = pokemonList.value.filter(pokemon =>
-    pokemon.name.toLowerCase().includes(normalized))
-  } else {
-    pokemonsFiltered.value = [...pokemonList.value]
-  }
-  showRedirect.value = pokemonsFiltered.value.length === 0
-}
-
-// ----------- LIFECYCLE -----------
-onBeforeMount(async () => {
-  const loading = ElLoading.service({
-    fullscreen: true,
-    lock: true,
-    svg: pokebola,
-  });
-  await store.getPokemonList()
-  pokemonsFiltered.value = [...pokemonList.value];
-  setTimeout(() => {
-    loading.close()
-  }, 2000)
-})
 
 </script>
-
-<style  lang="scss" scoped>
-.home{
-  width: 60%;
-  margin: 30px auto;
-  text-align: center;
+  
+  <style  lang="scss" scoped>
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  &__img {
+    background-color: $color-app-primary;
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: $color-black;
+    margin: 50px 0;
+  }
+  &__main {
+    margin: 20px;
+  }
+  &__main-title {
+    color: $color-title;
+    font-weight: 700;
+    font-size: 26px;
+  }
+  &__main-text {
+    margin: 20px;
+    line-height: 1.6;
+    color: $text-primary;
+  }
 }
-
 </style>

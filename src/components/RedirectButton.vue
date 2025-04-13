@@ -7,17 +7,17 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from "vue-router";
 
-
+// ----------- ROUTER -----------
 const router = useRouter();
 const route = useRoute();
 
 // ----------- COMPUTED -----------
 const buttonLabel = computed(() => {
-  return route.name === 'Welcome' ? 'Get Started' : 'Go Back Home'
+  return route.name === 'Home' ? 'Get Started' : 'Go Back Home'
 })
 
 const redirectTo = computed(() => {
-  return route.name === 'Welcome' ? 'Home' : 'Welcome'
+  return route.name === 'Home' ? 'Pokemons' : 'Home'
 })
 
 // ----------- METHODS -----------
@@ -30,7 +30,6 @@ const changeRoute = () => {
 <style lang="scss" scoped>
 
 .redirect-button {
-  margin-top: 30px;
   @include redirect-button($color-app-primary);
 }
 </style>
