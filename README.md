@@ -1,4 +1,4 @@
-# Pokédex Vue 3 App
+# Pokédex App
 
 Una pequeña App construida con **Vue 3**, **Vite** y **Element Plus**, que permite buscar, visualizar y filtrar una lista de Pokémons. Al seleccionar un pokémon de la lista, se despliega un modal con información detallada del mismo y donde se puede seleccionar si es uno de mis pokémones favoritos o no.
 
