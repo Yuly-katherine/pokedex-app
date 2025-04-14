@@ -45,19 +45,22 @@ El proyecto está dividido en **componentes reutilizables** y una lógica clara 
 - Para mostrar el **loading** de forma más visual, utilicé un **setTimeout** artificial. **No es una buena práctica para producción**, pero lo hice intencionalmente para simular una carga más lenta y así visualizar mejor el componente de carga.
 
 ---
+
+## 📋 Unit Test
+
 ### 🔧 Vitest
 
-- Usé **Vitest** como framework de pruebas, ya que es una **herramienta moderna**, **rápida** y totalmente compatible con Vite, Esto permite una integración fluida y un tiempo de ejecución de pruebas muy eficiente.
+ Usé **Vitest** como framework de pruebas, ya que es una **herramienta moderna**, **rápida** y totalmente compatible con Vite, Esto permite una integración fluida y un tiempo de ejecución de pruebas muy eficiente.
 
 
 ###  📝 Vue Test Utils
 
-- Utilicé **Vue Test Utils** para montar y testear componentes de Vue. Esta herramienta es el estándar oficial de testing para Vue.js y facilita simular interacciones, emitir eventos y acceder al DOM de los componentes.
+Utilicé **Vue Test Utils** para montar y testear componentes de Vue. Esta herramienta es el estándar oficial de testing para Vue.js y facilita simular interacciones, emitir eventos y acceder al DOM de los componentes.
 
 
 ### 🍍 Pinia Testing
 
-- Para testear el store de manera aislada, integré **@pinia/testing**. Esto me permitió crear un store de prueba controlado en los tests, facilitando la simulación del estado y acciones sin depender del backend o de los datos reales.
+ Para testear el store de manera aislada, integré **@pinia/testing**. Esto me permitió crear un store de prueba controlado en los tests, facilitando la simulación del estado y acciones sin depender del backend o de los datos reales.
 
 ---
 
@@ -85,4 +88,4 @@ npm run dev
 
 ## ✨ Autor
 
-Desarrollado con 💛 por Yuly Katherine Gómez
+Desarrollado con amor por Yuly Katherine Gómez 💖
