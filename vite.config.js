@@ -20,5 +20,9 @@ export default defineConfig({
         additionalData: '@use "@/assets/scss/_app.scss" as *;'
       }
     }
-  }
+  }, 
+  test: {
+    globals: true,
+    environment: 'jsdom',
+  },
 })
