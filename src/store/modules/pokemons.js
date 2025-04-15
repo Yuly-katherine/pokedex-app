@@ -6,17 +6,23 @@ export const usePokemonStore = defineStore('pokemon', {
   }),
   actions: {
     async getPokemonList() {
-      try {
-        const url = 'https://pokeapi.co/api/v2/pokemon'
-        const response = await fetch(url)
-        const json = await response.json()
-        this.pokemonList = json.results.map(pokemon => ({
-          ...pokemon,
+
+      if (this.pokemonList.length) {
+        return this.pokemonList
+      }
+    
+      try{
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon')
+        const { results } = await response.json()
+        this.pokemonList = results.map(pokemon => ({
+        ...pokemon,
           favorite: false
         }))
+
         return this.pokemonList
-      } catch (err) {
-        console.error('Error when obtaining pokemons', err)
+      } catch (error) {
+        console.error('Error fetching Pokémon list:', error)
+        return []
       }
     },
     async getPokemonByName(name) {
