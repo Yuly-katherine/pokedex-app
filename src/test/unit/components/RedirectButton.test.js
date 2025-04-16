@@ -2,6 +2,8 @@ import { mount } from '@vue/test-utils'
 import RedirectButton from '@/components/RedirectButton.vue'
 import { describe, it, expect, vi } from 'vitest'
 
+
+  //-----DEFINE MOCKS-----
 let mockRouteName = 'Home'
 const mockPush = vi.fn()
 vi.mock('vue-router', () => ({

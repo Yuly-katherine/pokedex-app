@@ -3,6 +3,8 @@ import { mount, flushPromises } from '@vue/test-utils'
 import PokemonDetail from '@/components/PokemonDetail.vue'
 import ElementPlus from 'element-plus'
 
+
+//-----DEFINE MOCKS-----
 const mockPokemon = {
   name: 'pikachu',
   weight: 60,
@@ -22,18 +24,24 @@ const mockSelected = {
 }
 
 describe('PokemonDetail.vue', () => {
-  it('Shows the correct Pokemon data received by props', async() => {
-    const wrapper = mount(PokemonDetail, {
+
+//-----WRAPPER-----
+let wrapper
+  beforeEach(() => {
+    wrapper = mount(PokemonDetail, {
       props: {
-        modalVisible: true,
         pokemonAttributes: mockPokemon,
         pokemonSelected: mockSelected,
+        modalVisible: true,
       },
       global: {
         plugins: [ElementPlus],
       },
     })
+  })
 
+
+  it('Shows the correct Pokemon data received by props', async() => {
     await flushPromises()
     const text = wrapper.text()
     expect(text).toContain('Name:')
@@ -51,16 +59,6 @@ describe('PokemonDetail.vue', () => {
 
 
   it('Emit selectFavorite when the favorite button is clicked.', async () => {
-    const wrapper = mount(PokemonDetail, {
-      props: {
-        pokemonAttributes: mockPokemon,
-        pokemonSelected: mockSelected,
-        modalVisible: true,
-      },
-      global: {
-        plugins: [ElementPlus],
-      },
-    })
     await flushPromises()
     const favButton = wrapper.find('.dialog-footer__fav')
     await favButton.trigger('click')
@@ -70,16 +68,6 @@ describe('PokemonDetail.vue', () => {
 
 
   it('Emit closeModal when the close button is clicked.', async () => {
-    const wrapper = mount(PokemonDetail, {
-      props: {
-        pokemonAttributes: mockPokemon,
-        pokemonSelected: mockSelected,
-        modalVisible: true,
-      },
-      global: {
-        plugins: [ElementPlus],
-      },
-    })
     wrapper.vm.$emit('closeModal')
     await wrapper.vm.$nextTick()
 

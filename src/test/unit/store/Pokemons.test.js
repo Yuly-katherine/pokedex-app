@@ -2,8 +2,9 @@ import { setActivePinia, createPinia } from 'pinia'
 import { usePokemonStore } from '@/store/modules/pokemons'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 
-let store;
 describe('Pokemon Store', () => {
+  
+  let store;
   beforeEach(() => {
     setActivePinia(createPinia())
     store = usePokemonStore()
