@@ -11,12 +11,13 @@ vi.mock('vue-router', () => ({
   useRouter: () => ({ push: vi.fn() })
 }))
 
-describe('PokemonsView.vue', async() => {
+  //-----DEFINE MOCKS-----
+const mockPokemons = [
+  { name: 'pikachu', url: '', favorite: true },
+  { name: 'bulbasaur', url: '', favorite: false }
+]
 
-    const mockPokemons = [
-        { name: 'pikachu', url: '', favorite: true },
-        { name: 'bulbasaur', url: '', favorite: false }
-    ]
+describe('PokemonsView.vue', async() => {
 
   let wrapper
 
@@ -80,5 +81,29 @@ describe('PokemonsView.vue', async() => {
 
   expect(detail.exists()).toBe(true)
   expect(detail.props('modalVisible')).toBe(true)
+  })
+
+  it('shows message when pokemonsFiltered is empty', async()=> {
+
+    const pinia = createTestingPinia({
+      stubActions: false,
+      initialState: {
+        pokemons: {
+          pokemonList: []
+        }
+      },
+      createSpy: vi.fn
+    })
+
+    const customWrapper = mount(PokemonsView, {
+      global: {
+        plugins: [pinia, ElementPlus]
+      }
+    })
+
+    customWrapper.vm.pokemonsFiltered = []
+    await flushPromises()
+
+    expect(customWrapper.text()).toContain('You look lost on your journey!')
   })
 })
