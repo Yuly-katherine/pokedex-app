@@ -2,7 +2,7 @@
   <div class="container">
     <img
       class="container__img"
-      src="pikachu.svg"
+      :src="pikachuIcon"
       alt="pikachú"
     />
     <section class="container__main">
@@ -20,6 +20,7 @@
   <script setup>
 // ----------- IMPORT -----------
 import RedirectButton from "../components/RedirectButton.vue";
+import pikachuIcon from '../../public/pikachu.svg?row'
 
 
 </script>
