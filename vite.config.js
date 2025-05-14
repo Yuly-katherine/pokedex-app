@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import string  from 'vite-plugin-string'
 
 export default defineConfig({
+  base: '/pokedex-app/',
   plugins: [vue(),
     string({
       include: ['**/*.svg']
