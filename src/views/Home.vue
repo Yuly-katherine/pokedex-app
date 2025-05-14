@@ -2,7 +2,7 @@
   <div class="container">
     <img
       class="container__img"
-      src="../assets/scss/icons/pikachu.svg"
+      src="pikachu.svg"
       alt="pikachú"
     />
     <section class="container__main">
