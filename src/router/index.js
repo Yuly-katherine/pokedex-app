@@ -5,12 +5,12 @@ const AppRoute = [
   {
     path: '/:pathMatch(.*)*',
     name: 'PageNotFound',
-    component: () => import(/* webpackChunkName: "pagenotfound" */ '../views/PageNotFound.vue'),
+    component: () => import('../views/PageNotFound.vue'),
   },
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     ...AppRoute,
     ...LayoutRoute,
